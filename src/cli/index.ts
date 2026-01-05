@@ -3,8 +3,8 @@
 import * as p from '@clack/prompts';
 import chalk from 'chalk';
 import { analyzeContributions } from '@/core';
-import { buildTimeRangeDescription, mapToAnalyzerOptions } from './commands/utils';
 import { createCommand, parseArgs } from './commands';
+import { buildTimeRangeDescription, mapToAnalyzerOptions } from './commands/utils';
 import { createPrinter } from './output';
 import type { CLIOptions } from './types';
 import { validateCLIOptions } from './validators';

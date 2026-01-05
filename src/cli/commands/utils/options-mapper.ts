@@ -1,7 +1,7 @@
 import type { AnalyzerOptions } from '@/core';
 import { DEFAULT_DAYS } from '@/core';
-import { subcommandToMode } from '../';
 import type { CLIOptions } from '../../types';
+import { subcommandToMode } from '../';
 
 /**
  * Map CLI options to analyzer options
