@@ -1,6 +1,6 @@
 {
   "name": "gimpact",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Visualize Git contribution impact by developer",
   "type": "module",
   "repository": {
