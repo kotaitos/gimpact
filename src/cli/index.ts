@@ -3,7 +3,7 @@
 import * as p from '@clack/prompts';
 import chalk from 'chalk';
 import { analyzeContributions } from '@/core';
-import { adaptToAnalyzerOptions, buildTimeRangeDescription } from './adapters';
+import { buildTimeRangeDescription, mapToAnalyzerOptions } from './commands/utils';
 import { createCommand, parseArgs } from './commands';
 import { createPrinter } from './output';
 import type { CLIOptions } from './types';
@@ -26,7 +26,7 @@ async function main() {
   }
 
   // Adapt to analyzer options
-  const analyzerOptions = adaptToAnalyzerOptions(options);
+  const analyzerOptions = mapToAnalyzerOptions(options);
   const timeRangeDescription = buildTimeRangeDescription(options);
 
   p.intro(chalk.bgCyan(chalk.black(' gimpact ')));

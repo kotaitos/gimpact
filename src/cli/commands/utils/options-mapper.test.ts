@@ -1,9 +1,9 @@
 import { describe, expect, test } from 'bun:test';
 import { DEFAULT_DAYS } from '@/core';
-import type { CLIOptions } from '../types';
-import { adaptToAnalyzerOptions } from './options-adapter';
+import type { CLIOptions } from '../../types';
+import { mapToAnalyzerOptions } from './options-mapper';
 
-describe('adaptToAnalyzerOptions', () => {
+describe('mapToAnalyzerOptions', () => {
   describe('サブコマンドからmodeとperiodUnitを決定', () => {
     test('summaryサブコマンドはaggregateモードになる', () => {
       // Arrange
@@ -13,7 +13,7 @@ describe('adaptToAnalyzerOptions', () => {
       };
 
       // Act
-      const result = adaptToAnalyzerOptions(options);
+      const result = mapToAnalyzerOptions(options);
 
       // Assert
       expect(result.mode).toBe('aggregate');
@@ -28,7 +28,7 @@ describe('adaptToAnalyzerOptions', () => {
       };
 
       // Act
-      const result = adaptToAnalyzerOptions(options);
+      const result = mapToAnalyzerOptions(options);
 
       // Assert
       expect(result.mode).toBe('periodic');
@@ -43,7 +43,7 @@ describe('adaptToAnalyzerOptions', () => {
       };
 
       // Act
-      const result = adaptToAnalyzerOptions(options);
+      const result = mapToAnalyzerOptions(options);
 
       // Assert
       expect(result.mode).toBe('periodic');
@@ -58,7 +58,7 @@ describe('adaptToAnalyzerOptions', () => {
       };
 
       // Act
-      const result = adaptToAnalyzerOptions(options);
+      const result = mapToAnalyzerOptions(options);
 
       // Assert
       expect(result.mode).toBe('periodic');
@@ -73,7 +73,7 @@ describe('adaptToAnalyzerOptions', () => {
       };
 
       // Act
-      const result = adaptToAnalyzerOptions(options);
+      const result = mapToAnalyzerOptions(options);
 
       // Assert
       expect(result.mode).toBe('ownership');
@@ -91,7 +91,7 @@ describe('adaptToAnalyzerOptions', () => {
       };
 
       // Act
-      const result = adaptToAnalyzerOptions(options);
+      const result = mapToAnalyzerOptions(options);
 
       // Assert
       expect(result.timeRange).toBeDefined();
@@ -110,7 +110,7 @@ describe('adaptToAnalyzerOptions', () => {
       };
 
       // Act
-      const result = adaptToAnalyzerOptions(options);
+      const result = mapToAnalyzerOptions(options);
 
       // Assert
       expect(result.timeRange).toBeDefined();
@@ -128,7 +128,7 @@ describe('adaptToAnalyzerOptions', () => {
       };
 
       // Act
-      const result = adaptToAnalyzerOptions(options);
+      const result = mapToAnalyzerOptions(options);
 
       // Assert
       expect(result.timeRange).toBeDefined();
@@ -148,7 +148,7 @@ describe('adaptToAnalyzerOptions', () => {
       };
 
       // Act
-      const result = adaptToAnalyzerOptions(options);
+      const result = mapToAnalyzerOptions(options);
 
       // Assert
       expect(result.timeRange).toBeDefined();
@@ -168,7 +168,7 @@ describe('adaptToAnalyzerOptions', () => {
       };
 
       // Act
-      const result = adaptToAnalyzerOptions(options);
+      const result = mapToAnalyzerOptions(options);
 
       // Assert
       expect(result.timeRange).toBeDefined();
@@ -187,7 +187,7 @@ describe('adaptToAnalyzerOptions', () => {
       };
 
       // Act
-      const result = adaptToAnalyzerOptions(options);
+      const result = mapToAnalyzerOptions(options);
 
       // Assert
       expect(result.timeRange).toBeDefined();
@@ -203,7 +203,7 @@ describe('adaptToAnalyzerOptions', () => {
       };
 
       // Act
-      const result = adaptToAnalyzerOptions(options);
+      const result = mapToAnalyzerOptions(options);
 
       // Assert
       expect(result.timeRange).toBeDefined();
@@ -223,7 +223,7 @@ describe('adaptToAnalyzerOptions', () => {
       };
 
       // Act
-      const result = adaptToAnalyzerOptions(options);
+      const result = mapToAnalyzerOptions(options);
 
       // Assert
       expect(result.authors).toEqual(['John Doe', 'Jane Smith']);
@@ -238,7 +238,7 @@ describe('adaptToAnalyzerOptions', () => {
       };
 
       // Act
-      const result = adaptToAnalyzerOptions(options);
+      const result = mapToAnalyzerOptions(options);
 
       // Assert
       expect(result.authors).toBeUndefined();
@@ -252,7 +252,7 @@ describe('adaptToAnalyzerOptions', () => {
       };
 
       // Act
-      const result = adaptToAnalyzerOptions(options);
+      const result = mapToAnalyzerOptions(options);
 
       // Assert
       expect(result.authors).toBeUndefined();
@@ -269,7 +269,7 @@ describe('adaptToAnalyzerOptions', () => {
       };
 
       // Act
-      const result = adaptToAnalyzerOptions(options);
+      const result = mapToAnalyzerOptions(options);
 
       // Assert
       expect(result.branch).toBe('main');
@@ -283,7 +283,7 @@ describe('adaptToAnalyzerOptions', () => {
       };
 
       // Act
-      const result = adaptToAnalyzerOptions(options);
+      const result = mapToAnalyzerOptions(options);
 
       // Assert
       expect(result.branch).toBeUndefined();
@@ -300,7 +300,7 @@ describe('adaptToAnalyzerOptions', () => {
       };
 
       // Act
-      const result = adaptToAnalyzerOptions(options);
+      const result = mapToAnalyzerOptions(options);
 
       // Assert
       expect(result.minCommits).toBe(5);
@@ -315,7 +315,7 @@ describe('adaptToAnalyzerOptions', () => {
       };
 
       // Act
-      const result = adaptToAnalyzerOptions(options);
+      const result = mapToAnalyzerOptions(options);
 
       // Assert
       expect(result.minCommits).toBe(0);
@@ -329,7 +329,7 @@ describe('adaptToAnalyzerOptions', () => {
       };
 
       // Act
-      const result = adaptToAnalyzerOptions(options);
+      const result = mapToAnalyzerOptions(options);
 
       // Assert
       expect(result.minCommits).toBeUndefined();
@@ -346,7 +346,7 @@ describe('adaptToAnalyzerOptions', () => {
       };
 
       // Act
-      const result = adaptToAnalyzerOptions(options);
+      const result = mapToAnalyzerOptions(options);
 
       // Assert
       expect(result.excludePatterns).toEqual(['**/*.lock', '**/dist/**']);
@@ -361,7 +361,7 @@ describe('adaptToAnalyzerOptions', () => {
       };
 
       // Act
-      const result = adaptToAnalyzerOptions(options);
+      const result = mapToAnalyzerOptions(options);
 
       // Assert
       expect(result.excludePatterns).toBeUndefined();
@@ -376,7 +376,7 @@ describe('adaptToAnalyzerOptions', () => {
       };
 
       // Act
-      const result = adaptToAnalyzerOptions(options);
+      const result = mapToAnalyzerOptions(options);
 
       // Assert
       expect(result.respectGitignore).toBe(false);
@@ -391,7 +391,7 @@ describe('adaptToAnalyzerOptions', () => {
       };
 
       // Act
-      const result = adaptToAnalyzerOptions(options);
+      const result = mapToAnalyzerOptions(options);
 
       // Assert
       expect(result.respectGitignore).toBe(true);
@@ -405,7 +405,7 @@ describe('adaptToAnalyzerOptions', () => {
       };
 
       // Act
-      const result = adaptToAnalyzerOptions(options);
+      const result = mapToAnalyzerOptions(options);
 
       // Assert
       expect(result.respectGitignore).toBeUndefined();
@@ -420,7 +420,7 @@ describe('adaptToAnalyzerOptions', () => {
       };
 
       // Act
-      const result = adaptToAnalyzerOptions(options);
+      const result = mapToAnalyzerOptions(options);
 
       // Assert
       expect(result.directory).toBe('packages/cli/src');
@@ -434,7 +434,7 @@ describe('adaptToAnalyzerOptions', () => {
       };
 
       // Act
-      const result = adaptToAnalyzerOptions(options);
+      const result = mapToAnalyzerOptions(options);
 
       // Assert
       expect(result.directory).toBeUndefined();
@@ -457,7 +457,7 @@ describe('adaptToAnalyzerOptions', () => {
       };
 
       // Act
-      const result = adaptToAnalyzerOptions(options);
+      const result = mapToAnalyzerOptions(options);
 
       // Assert
       expect(result.mode).toBe('periodic');
@@ -481,7 +481,7 @@ describe('adaptToAnalyzerOptions', () => {
       };
 
       // Act
-      const result = adaptToAnalyzerOptions(options);
+      const result = mapToAnalyzerOptions(options);
 
       // Assert
       expect(result.mode).toBe('ownership');

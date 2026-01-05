@@ -1,14 +1,14 @@
 import type { AnalyzerOptions } from '@/core';
 import { DEFAULT_DAYS } from '@/core';
-import { subcommandToMode } from '../commands';
-import type { CLIOptions } from '../types';
+import { subcommandToMode } from '../';
+import type { CLIOptions } from '../../types';
 
 /**
- * Adapt CLI options to analyzer options
+ * Map CLI options to analyzer options
  * @param options - Validated CLI options
  * @returns Analyzer options
  */
-export function adaptToAnalyzerOptions(options: CLIOptions): AnalyzerOptions {
+export function mapToAnalyzerOptions(options: CLIOptions): AnalyzerOptions {
   // Determine mode and periodUnit from subcommand if specified
   const subcommandConfig = subcommandToMode[options.subcommand];
   const mode = subcommandConfig.mode;

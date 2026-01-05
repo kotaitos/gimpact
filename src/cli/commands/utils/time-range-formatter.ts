@@ -1,5 +1,5 @@
 import { DEFAULT_DAYS } from '@/core';
-import type { CLIOptions } from '../types';
+import type { CLIOptions } from '../../types';
 
 /**
  * Build human-readable time range description
